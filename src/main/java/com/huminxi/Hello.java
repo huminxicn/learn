@@ -1,7 +1,7 @@
 package com.huminxi;
 
 /**
- * 一句话概括功能。
+ * 1.通过创建不同分支来保存不同代码。
  *
  * @author huminxi2017@gmail.com
  * @since 2022/02/09 13:58
