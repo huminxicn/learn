@@ -1,3 +1,4 @@
+import com.huminxi.service.OrderService;
 import com.huminxi.service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -12,7 +13,9 @@ public class Application {
     public static void main(String[] args) {
 //        test_Spring_1_2_Advice();
 //        test_Spring_1_2_Advisor();
-        test_Spring_1_2_DebugInterceptor();
+//        test_Spring_1_2_DebugInterceptor();
+//        test_Spring_1_2_BeanNameAutoProxy();
+        test_Spring_1_2_DefaultAdvisorAutoProxy();
 
     }
 
@@ -49,6 +52,36 @@ public class Application {
         userService.queryUser();
     }
 
+    public static void test_Spring_1_2_BeanNameAutoProxy() {
+        // 启动 Spring 的 IOC 容器
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring_1_2_BeanNameAutoProxy.xml");
+
+        // 注意这里，不再需要根据代理找 bean
+        UserService userService = context.getBean(UserService.class);
+        OrderService orderService = context.getBean(OrderService.class);
+
+        userService.createUser("Tom", "Cruise", 55);
+        userService.queryUser();
+
+        orderService.createOrder("Leo", "随便买点什么");
+        orderService.queryOrder("Leo");
+    }
+
+
+    public static void test_Spring_1_2_DefaultAdvisorAutoProxy() {
+
+        // 启动 Spring 的 IOC 容器
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring_1_2_DefaultAdvisorAutoProxy.xml");
+
+        UserService userService = context.getBean(UserService.class);
+        OrderService orderService = context.getBean(OrderService.class);
+
+        userService.createUser("Tom", "Cruise", 55);
+        userService.queryUser();
+
+        orderService.createOrder("Leo", "随便买点什么");
+        orderService.queryOrder("Leo");
+    }
 
 
 }
