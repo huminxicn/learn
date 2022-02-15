@@ -14,4 +14,11 @@
         <spring.version>4.3.11.RELEASE</spring.version>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>9.0.6</version>
+        </dependency>
+    </dependencies>
 </project>
